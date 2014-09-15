@@ -1,0 +1,67 @@
+<!DOCTYPE html5>
+
+<html>
+
+<head>
+
+
+<title> </title>
+<link rel='stylesheet' href="{{ url_for('static', filename='mocpage.css') }}"/>
+<link rel='stylesheet' href="C:/users/alex/documents/workspace/officialsirfscripts/politicize/source/static/css/mocpage.css"/>
+<link rel='stylesheet' href="C:/users/alex/documents/workspace/officialsirfscripts/politicize/source/static/css/bootstrap.min.css"
+<link rel='stylesheet' href="{{ url_for('static', filename='bootstrap.min.css') }}">
+<link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+<nav id='navbar' class='navbar navbar-default navbar-fixed-top'>
+	<div id='policize' class='container' style='padding-left:80px;'>
+        <div class='navbar-brand'>
+          <a href='HOME'> Policize </a>
+        </div>
+	</div>
+</nav>
+
+<div class='container' style='padding-top: 100px;'>
+  <div class='side-bar col-md-4'>
+     <h3 id='header'> {{title }} {{ name }} (<span style='color:{{ color }};'>{{ party }}</span>) </h3>
+     <img id='photo' style='height:303;width:220;' src='{{ img_url }}'/>
+     <h5 class='credits'>Image taken from <a href='wikipedia.org'>wikipedia.org</a></h5>
+     <hr>
+     <ul style='padding: 0 20px;'>
+     <li><p><span class='bold' >State</span> : <a href='{{ state }}'>{{ district }}</a> </p></li>
+     <li><p><span class='bold'>Twitter</span> : <a href='http://twitter.com/{{ handle }}'>{{ handle }}</a></p></li>
+     <li><p><span class='bold'>Tweets Archived</span> : {{ tweet_count }}</p></li>
+     </ul>
+
+  </div>
+  <div class='col-md-1' style='width:20px;text-align:left;'></div>
+  <div class='col-md-6 twitter-feed' >
+      <div class='feed-header'>
+      	  <p> <span class='bold'>Recent Tweets from </span><span class='italics'>{{ handle }}</span> </p>
+      </div>
+  	 <div class='tweet'>
+
+  	 </div>
+  </div>     	
+</div>
+
+
+
+
+
+
+
+
+
+  <script src="C:/users/alex/documents/workspace/officialsirfscripts/politicize/source/static/js/bootstrap.min.js"/>
+ <!-- <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"/>!-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</body>
+
+</html>

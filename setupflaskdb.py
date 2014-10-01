@@ -1,6 +1,7 @@
 '''
 Created on Sep 13, 2014
-
+Sets up the master sqlite db that I eventually use for my queries in the actual
+Flask app.
 @author: Alex
 '''
 

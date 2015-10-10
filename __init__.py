@@ -3,7 +3,6 @@ from flask import *
 from DataAnalysis import TwitterCorpus as tc #Module provides access to Twitter data
 import sqlite3
 
-
 app = Flask('Politicize')
 moc = set(map(lambda x: x[1],tc.get_mocs()))
 

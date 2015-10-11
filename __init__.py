@@ -21,7 +21,7 @@ def about():
 
 @app.route('/user/<handle>')
 def profile(handle): 
-    curs = sqlite3.connect('C:/users/alex/desktop/FlaskMoc.sqlite3').cursor()
+    curs = sqlite3.connect('FlaskMoc.sqlite3').cursor()
     fetch = curs.execute("select * from Members where handle = '%s' " % handle).fetchone()
     if fetch is None:
         return 'User Not Found'

@@ -2,17 +2,29 @@ import flask
 from flask import *
 from DataAnalysis import TwitterCorpus as tc #Module provides access to Twitter data
 import sqlite3
+DATABASE = 'FlaskMoc.sqlite3'
 
 app = Flask('Politicize')
-moc = set(map(lambda x: x[1],tc.get_mocs()))
+moc = set(map(lambda x: x[1], tc.get_mocs()))
 
+def fetch_db():
+    database = getattr(g, '_database', None)
+    if not database:
+        database = g._database = sqlite3.connect(DATABASE)
+    return database
+
+@app.teardown_appcontext
+def close_conenction(exception):
+    database = getattr(g, '_database', None)
+    if database:
+        database.close()
 
 @app.route('/', methods=['GET','POST'])
 def index(): 
     if request.method == 'POST':
-        return redirect('http://127.0.0.1:5000/user/'+request.form['handle'].lower())
+        return redirect('/user/%s' % request.form['handle'].lower())
     else:
-        return flask.render_template('index.html',static_folder ='/static/')
+        return flask.render_template('index.html', static_folder ='/static/')
 
 @app.route('/about/')
 def about():
@@ -21,7 +33,7 @@ def about():
 
 @app.route('/user/<handle>')
 def profile(handle): 
-    curs = sqlite3.connect('FlaskMoc.sqlite3').cursor()
+    curs = fetch_database().cursor()
     fetch = curs.execute("select * from Members where handle = '%s' " % handle).fetchone()
     if fetch is None:
         return 'User Not Found'
